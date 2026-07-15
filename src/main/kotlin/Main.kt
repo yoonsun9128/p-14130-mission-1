@@ -8,12 +8,26 @@ fun main() {
     println("==명언 앱 시작 ==")
 
     val scanner: Scanner = Scanner(System.`in`)
+    var createNumber = 0;
+    val wiseSayings = mutableListOf<WiseSaying>()
 
     while (true) {
         print("명령: ")
 
         val cmd = scanner.nextLine().trim()
 
+        if (cmd == "등록") {
+            print("명언 : ")
+            val content = scanner.nextLine().trim()
+            print("작가: ")
+            val writer = scanner.nextLine().trim()
+            createNumber++
+            wiseSayings.add(WiseSaying(createNumber, content, writer))
+            println("${createNumber}번 명언이 등록되었습니다. ")
+            continue
+        }
+
         if (cmd == "종료") break
+
     }
 }
