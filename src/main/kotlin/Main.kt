@@ -25,6 +25,12 @@ fun main() {
             wiseSayings.add(WiseSaying(createNumber, content, writer))
             println("${createNumber}번 명언이 등록되었습니다. ")
             continue
+        } else if (cmd == "목록") {
+            println("번호 / 작가 / 명언")
+            println("--------------------------")
+            for (wiseSaying in wiseSayings) {
+                println("${wiseSaying.id} / ${wiseSaying.content} / ${wiseSaying.writer}")
+            }
         }
 
         if (cmd == "종료") break
