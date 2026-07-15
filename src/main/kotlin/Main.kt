@@ -37,6 +37,23 @@ fun main() {
             var find =
                 wiseSayings.find { it.id == checkId }?.let { wiseSayings.remove(it) } ?: println("${checkId}번 명언은 존재하지 않습니다.")
             if (find == true) println("${checkId}번 명언이 삭제되었습니다.")
+        } else if ("수정" in cmd) {
+            val checkId = cmd.split("=")[1].toInt()
+            val wiseSaying = wiseSayings.find { it.id == checkId }
+                ?: run {
+                    println("${checkId}번 명언은 존재하지 않습니다.")
+                    return
+                }
+
+            println("명언(기존): ${wiseSaying.content}")
+            print("명언 : ")
+            val content = scanner.nextLine().trim()
+
+            println("작가(기존): ${wiseSaying.writer}")
+            print("작가: ")
+            val writer = scanner.nextLine().trim()
+            wiseSaying.update(content, writer)
+            continue
         }
 
         if (cmd == "종료") break
