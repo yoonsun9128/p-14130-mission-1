@@ -31,6 +31,12 @@ fun main() {
             for (wiseSaying in wiseSayings) {
                 println("${wiseSaying.id} / ${wiseSaying.content} / ${wiseSaying.writer}")
             }
+        } else if ("삭제" in cmd) {
+            val checkId = cmd.split("=")[1].toInt()
+
+            var find =
+                wiseSayings.find { it.id == checkId }?.let { wiseSayings.remove(it) } ?: println("${checkId}번 명언은 존재하지 않습니다.")
+            if (find == true) println("${checkId}번 명언이 삭제되었습니다.")
         }
 
         if (cmd == "종료") break
